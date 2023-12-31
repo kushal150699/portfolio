@@ -1,0 +1,118 @@
+Kushal Agrawal
++91-9027673390, 9411835148
+kushal12345kushal@gmail.com | m23csa@iitj.ac.in
+Indian Institute Of Technology, Jodhpur
+Github | Website
+LinkedIn: linkedin.com/in/kushal-agrawal-36a387168
+
+Education
+Degree/Certificate                  | Institute/Board                            | CGPA/Percentage | Year
+M.Tech. (AI)                              | Indian Institute of Technology, Jodhpur | 7.71                  | Jul 2023-Present
+B.Tech. (ME)                               | Institute of Engineering and Technology, Lucknow | 8.41 | 2018-2022
+Senior Secondary                      | CBSE Board                                   | 90.0%              | 2017
+Secondary                                    | ICSE Board                                    | 95.2%              | 2015
+
+Experience
+• TechUp Labs (01/2023 - 06/2023)
+  Machine Learning Engineer | Remote
+  – Led 6 active projects from research to development in under 4 months.
+  – Created "OneForAll CodeGPT" and "MemeCap" using LLM’s.
+
+• TechUp Labs (Oct 2022 - Dec 2022)
+  Machine Learning Intern | Remote
+  – Worked on User Data Analysis for behavioral pattern discovery.
+  – Contributed to internal projects, including Time Series Forecasting and Sentiment Analysis.
+
+Projects
+• OneForALL CodeGPT
+  - All-in-one application for resolving code-related issues.
+  - Tools & technologies used: GPT, ChatGPT API, Prompt Engineering, Streamlit App
+
+• American Express - Default Prediction
+  - Developed a 2-stage stacking of Boosting and Neural Network models for credit card default prediction.
+
+• MemeCap
+  - Takes user-input image, transcribes with CV models, and generates meme captions with GPT.
+  - Tools & technologies used: LLM, CV, ChatGPT API, Prompt Engineering, Streamlit App
+
+• Cassava Leaf Disease Classification
+  - Classified cassava images into four disease categories.
+  - Tools & technologies used: ResNet, EfficientNet, Data Augmentation.
+
+Key Courses Taken
+• Data Structure, Algorithms, DBMS, Machine Learning, Artificial Intelligence, Python
+
+Technical Skills
+• Programming: C, Python, SQL
+• Tools & OS: Git, Jupyter Notebook, Google Colab, Linux, Windows, AWS EC2
+• Libraries/Frameworks: Pandas, Numpy, scikit-learn, PyTorch, Matplotlib, Langchain, Streamlit, FastAPI
+
+Achievements
+• Top 2% Kaggle MOA Competition
+• Top 3% Kaggle Cassava Competition
+• Solo Rank 1742/4874 teams American Express Default Prediction Competition
+• Rank 400/3395 teams Riid Answer Correctness Competition
+• Rank 144/1547 teams Ranzcr Clip Competition
+• AIR 3006 GATE CS 2022 Score 504
+
+Certifications
+• Natural Language Processing with Sequence Models - DeepLearning.AI
+• Natural Language Processing with Probabilistic Models - DeepLearning.AI
+• Python for Everybody Specialization (Coursera)
+
+
+# load the file
+documents = SimpleDirectoryReader(input_files=["bio.txt"]).load_data()
+
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+
+def ask_bot(input_text):
+    
+    # This will wrap the default prompts that are internal to llama-index
+    query_wrapper_prompt = SimpleInputPrompt("<|USER|>{query_str}<|ASSISTANT|>")
+
+    # query LlamaIndex and GPT-3.5 for the AI's response
+    system_prompt = """<|System|>#You are Buddy, an AI assistant dedicated to assisting kushal in his job search by providing recruiters with relevant and concise information. 
+    If you do not know the answer, politely admit it and let recruiters know how to contact kushal to get more information directly from him. 
+    Don't put "Buddy" or a breakline in the front of your answer.
+    """
+
+    llm = HuggingFaceLLM(
+        context_window=4096,
+        max_new_tokens=256,
+        generate_kwargs={"temperature": 0.7, "do_sample": False},
+        system_prompt=system_prompt,
+        query_wrapper_prompt=query_wrapper_prompt,
+        tokenizer_name="StabilityAI/stablelm-tuned-alpha-3b",
+        model_name="StabilityAI/stablelm-tuned-alpha-3b",
+        device_map="auto",
+        tokenizer_kwargs={"max_length": 4096},
+    )
+
+    # llm=HuggingFaceHub(repo_id="google/flan-t5-xl", model_kwargs={"temperature":0, "max_length":512})
+    # llm_predictor = LLMPredictor(llm=llm)
+    service_context = ServiceContext.from_defaults( chunk_size=512,llm=llm, embed_model="local")
+    
+    # load index
+    index = VectorStoreIndex.from_documents(documents, service_context=service_context)   
+    
+    # # query LlamaIndex and GPT-3.5 for the AI's response
+    # PROMPT_QUESTION = f"""You are Buddy, an AI assistant dedicated to assisting kushal in his job search by providing recruiters with relevant and concise information. 
+    # If you do not know the answer, politely admit it and let recruiters know how to contact kushal to get more information directly from him. 
+    # Don't put "Buddy" or a breakline in the front of your answer.
+    # Human: {input}
+    # """
+    
+    output = index.as_query_engine().query(input_text)
+    print(f"output: {output}")
+    return output.response
+
+# get the user's input by calling the get_text function
+def get_text():
+    input_text = st.text_input("You can enter your questions and hit Enter to know more about me from my AI agent, Buddy!", key="input")
+    return input_text
+
+user_input = get_text()
+
+if user_input:
+    st.info(ask_bot(user_input))
