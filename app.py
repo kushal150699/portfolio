@@ -229,26 +229,26 @@ elif choose == "Education":
             - CGPA/Percentage -  8.41 CGPA
             - Volunteer (MechFest)
             """)
-    with st.container():
-        image_column, text_column = st.columns((1,2.5))
-        with image_column:
-            st.image(sn_src_img)
-        with text_column:
-            st.subheader("Senior Secondary - [Sumeet Rahul Goel Memorial School](https://srgms.org/) (2017)")
-            st.write("Coursework: English , Mathematics , Physics , Chemistry , Painting")
-            st.markdown(""" 
-            - CGPA/Percentage - 90 %
-            """)
-    with st.container():
-        image_column, text_column = st.columns((1,2.5))
-        with image_column:
-            st.image(src_img)
-        with text_column:
-            st.subheader("Secondary - [St. Conrad's Inter College](https://www.conrads.in//) (2015)")
-            st.write("Coursework: English , Hindi , Mathematics , Science , History , Civics and Geography , Computer Applications")
-            st.markdown(""" 
-            - CGPA/Percentage - 95.2 % 
-            """)
+    # with st.container():
+    #     image_column, text_column = st.columns((1,2.5))
+    #     with image_column:
+    #         st.image(sn_src_img)
+    #     with text_column:
+    #         st.subheader("Senior Secondary - [Sumeet Rahul Goel Memorial School](https://srgms.org/) (2017)")
+    #         st.write("Coursework: English , Mathematics , Physics , Chemistry , Painting")
+    #         st.markdown(""" 
+    #         - CGPA/Percentage - 90 %
+    #         """)
+    # with st.container():
+    #     image_column, text_column = st.columns((1,2.5))
+    #     with image_column:
+    #         st.image(src_img)
+    #     with text_column:
+    #         st.subheader("Secondary - [St. Conrad's Inter College](https://www.conrads.in//) (2015)")
+    #         st.write("Coursework: English , Hindi , Mathematics , Science , History , Civics and Geography , Computer Applications")
+    #         st.markdown(""" 
+    #         - CGPA/Percentage - 95.2 % 
+    #         """)
 
 elif choose == "Projects":
     st.header("Projects")
