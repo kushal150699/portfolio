@@ -150,10 +150,10 @@ if choose == "About Me":
         with left_column:
             st.header("About Me")
             st.subheader("Aspiring Machine Learning Engineer")
-            st.markdown('<p class="big-font">👋🏻 Hello, I am Kushal Agrawal, currently immersed in the dynamic realm of Artificial Intelligence as an M.Tech student at IIT Jodhpur. Having prior relevant experiences in tech, I am constantly seeking unique internships to broaden my horizons before embarking on my AI career upon post graduation.</p>', unsafe_allow_html=True)
-            st.markdown('<p class="big-font">🏋🏻 In addition, I like to exercise in the gym, run, write, play video games and... enjoy eating good food in my free time!</p>', unsafe_allow_html=True)
-            st.markdown('<p class="big-font">👨🏼‍💻 Academic interests: Data Science , Machine Learning, Computer Vision , Natural language Processing</p>', unsafe_allow_html=True)
-            st.markdown('<p class="big-font">💭 Ideal Career Prospects: Data Scientist, ML Engineer , AI Developer</p>', unsafe_allow_html=True)
+            st.markdown('<p class="big-font">🚀 Hey there, Future Machine Learning Magician! 🌟 I amm Kushal Agrawal, on a wild journey through the AI wonderland at IIT Jodhpur. 🎓 Imagine me, donned in a cape, battling algorithms by day and sipping on a potion of coffee by night! ☕✨.</p>', unsafe_allow_html=True)
+            st.markdown('<p class="big-font">💻 When I am not deciphering the secrets of AI, you can catch me doing a dance-off with Data Science, a tango with Computer Vision, and a lyrical waltz with Natural Language Processing! 🕺💃</p>', unsafe_allow_html=True)
+            st.markdown('<p class="big-font">🌈 Dream Job Alert! I am on the lookout for the perfect gig as a Data Scientist, ML Engineer, or perhaps even an AI Developer – basically, the superhero of the tech world! 🦸‍♂️💼</p>', unsafe_allow_html=True)
+            st.markdown('<p class="big-font">🏋️‍♂️ Meanwhile, I am not just flexing my brain muscles; I am hitting the gym, sprinting through code, scribbling away, dominating video game realms, and indulging in a feast fit for a coding wizard! 🍔🎮</p>', unsafe_allow_html=True)
             st.write("📄 [Resume](https://spc.iitj.ac.in/media/resume/Kushal_Agrawal_M23CSA011_5126_IITJodhpur.pdf)")
         with middle_column:
             st.empty()
